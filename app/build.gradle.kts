@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.foundation.layout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -63,14 +64,15 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1")
     testImplementation("androidx.arch.core:core-testing:2.2.0") // InstantTaskExecutorR
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
+//    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
+//    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
+//    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.51")
-    kapt("com.google.dagger:hilt-compiler:2.51")
-
-    // Hilt ViewModel extension
+//    implementation("com.google.dagger:hilt-android:2.51")
+//    kapt("com.google.dagger:hilt-compiler:2.51")
+//
+//
+//    // Hilt ViewModel extension
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 }

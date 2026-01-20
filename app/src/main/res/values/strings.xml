@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ProtoMVI</string>
+
+    <!-- Search Github User Repos Screen -->
+    <string name="lbl_search_github_username">Search Github Username</string>
+    <string name="lbl_search_github_user">Search Github User Repo</string>
 </resources>
