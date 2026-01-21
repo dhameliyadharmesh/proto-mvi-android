@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
 import com.proto.mvi.ui.theme.ProtoMVITheme
-import com.proto.mvi.ui.theme.WrapperScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,9 +16,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val navController = rememberNavController()
             ProtoMVITheme {
-                WrapperScreen {
-                    AppNavHost(navController = navController)
-                }
+                AppNavHost(navController = navController)
             }
         }
     }
