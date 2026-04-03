@@ -57,5 +57,4 @@ val labelStyle = TextStyle(
     fontSize = 12.sp,
     lineHeight = 14.sp,
     letterSpacing = 0.sp,
-    color = WHITE
 )

@@ -1,8 +1,10 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -69,10 +71,17 @@ dependencies {
 //    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
 
     // Hilt
-//    implementation("com.google.dagger:hilt-android:2.51")
-//    kapt("com.google.dagger:hilt-compiler:2.51")
+    implementation("com.google.dagger:hilt-android:2.51")
+    ksp("com.google.dagger:hilt-compiler:2.51")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
 //
 //
 //    // Hilt ViewModel extension
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    // For Preferences DataStore
+    implementation(libs.androidx.datastore.preferences)
 }

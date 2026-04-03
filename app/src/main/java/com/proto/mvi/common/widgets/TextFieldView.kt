@@ -32,9 +32,11 @@ fun TextFieldView(
     value: String,
     onValueChange: (String) -> Unit,
     textStyle: TextStyle = labelStyle.copy(
-       fontSize = 14.sp,
+        fontSize = 14.sp,
     ),
     placeholder: @Composable (() -> Unit)? = null,
+    placeHolderText: String = "",
+    placeHolderStyle: TextStyle = Typography.labelSmall,
     label: String = "",
     labelTextStyle: TextStyle = Typography.labelSmall.copy(
         color = MaterialTheme.colorScheme.onPrimary, fontSize = 14.sp
@@ -47,20 +49,24 @@ fun TextFieldView(
         .height(48.dp),
     keyboardOptions: KeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
     leadingIcon: @Composable (() -> Unit)? = null,
+    enabled: Boolean = true,
     readOnly: Boolean = false,
     singleLine: Boolean = true,
     prefix: @Composable (() -> Unit)? = null,
     errorText: String = "",
     errorTextStyle: TextStyle = Typography.labelSmall.copy(
-        color = Color.White, fontSize = 12.sp
+        color = MaterialTheme.colorScheme.error, fontSize = 12.sp
     ),
     errorTextModifier: Modifier = Modifier.padding(vertical = 4.dp, horizontal = 0.dp),
     colors: TextFieldColors = TextFieldDefaults.colors(
-        focusedContainerColor = Color.Transparent, // Make background transparent
+        focusedContainerColor = Color.Transparent,
         unfocusedContainerColor = Color.Transparent,
         disabledContainerColor = Color.Transparent,
-        focusedIndicatorColor = MaterialTheme.colorScheme.primary, // Underline color when focused
-        unfocusedIndicatorColor = MaterialTheme.colorScheme.onSurfaceVariant, // Underline color when unfocused
+        focusedTextColor = MaterialTheme.colorScheme.onSurface,
+        unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+        disabledTextColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
+        focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+        unfocusedIndicatorColor = MaterialTheme.colorScheme.onSurfaceVariant,
         disabledIndicatorColor = MaterialTheme.colorScheme.onSurfaceVariant,
         errorIndicatorColor = MaterialTheme.colorScheme.error
     ),
@@ -81,7 +87,7 @@ fun TextFieldView(
     Column(
         modifier = containerModifier
     ) {
-        if(label.isNotBlank()) {
+        if (label.isNotBlank()) {
             TextView(
                 text = label,
                 textStyle = labelTextStyle,
@@ -91,7 +97,12 @@ fun TextFieldView(
         TextField(
             value = value,
             onValueChange = onValueChange,
-            placeholder = placeholder,
+            placeholder = {
+                TextView(
+                    text = placeHolderText,
+                    textStyle = placeHolderStyle
+                )
+            },
             modifier = modifier,
             shape = shape,
             textStyle = textStyle,
@@ -99,6 +110,7 @@ fun TextFieldView(
             keyboardOptions = keyboardOptions,
             leadingIcon = leadingIcon,
             readOnly = readOnly,
+            enabled = enabled,
             singleLine = singleLine,
             prefix = prefix,
             colors = colors,
