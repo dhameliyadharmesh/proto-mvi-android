@@ -9,6 +9,13 @@ data class Repo(
     val description: String?,
     val forks: Int? = 0,
     @SerializedName("html_url") val htmlUrl: String,
-    @SerializedName("stargazers_count") val stargazersCount: Int
+    @SerializedName("stargazers_count") val stargazersCount: Int,
+    @SerializedName("owner") val owner: Owner?,
+
+)
+
+data class Owner(
+    val login: String,
+    @SerializedName("avatar_url") val avatarUrl: String
 )
 

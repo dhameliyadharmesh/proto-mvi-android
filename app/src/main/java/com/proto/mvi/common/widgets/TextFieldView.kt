@@ -1,6 +1,7 @@
 package com.proto.mvi.common.widgets
 
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -26,6 +27,7 @@ import com.proto.mvi.ui.theme.Typography
 import com.proto.mvi.ui.theme.labelStyle
 
 // CustomText Composable
+@SuppressLint("LocalContextResourcesRead")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TextFieldView(
@@ -34,7 +36,6 @@ fun TextFieldView(
     textStyle: TextStyle = labelStyle.copy(
         fontSize = 14.sp,
     ),
-    placeholder: @Composable (() -> Unit)? = null,
     placeHolderText: String = "",
     placeHolderStyle: TextStyle = Typography.labelSmall,
     label: String = "",

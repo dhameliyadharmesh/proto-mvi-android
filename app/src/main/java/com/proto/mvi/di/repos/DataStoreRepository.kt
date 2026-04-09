@@ -22,7 +22,7 @@ class DataStoreRepository @Inject constructor(
         .map { preferences ->
             preferences[DARK_THEME_KEY] ?: false  // default light
         }
-        .catch { exception ->
+        .catch { _ ->
             emit(false)
         }
 

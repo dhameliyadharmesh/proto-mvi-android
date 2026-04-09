@@ -25,7 +25,6 @@ fun AppNavHost(navController: NavHostController, appViewModel: AppViewModel) {
             Screen.SearchUser.route
         ) {
             SearchAccountScreen(
-                navController = navController,
                 appViewModel = appViewModel
             )
         }

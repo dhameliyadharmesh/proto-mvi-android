@@ -62,8 +62,11 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
+    //noinspection UseTomlInstead,NewerVersionAvailable
     testImplementation("app.cash.turbine:turbine:1.1.0")  // For testing Flows
+    //noinspection UseTomlInstead,NewerVersionAvailable
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1")
+    //noinspection UseTomlInstead
     testImplementation("androidx.arch.core:core-testing:2.2.0") // InstantTaskExecutorR
 
 //    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
@@ -71,11 +74,15 @@ dependencies {
 //    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
 
     // Hilt
+    //noinspection NewerVersionAvailable,UseTomlInstead
     implementation("com.google.dagger:hilt-android:2.51")
+    //noinspection UseTomlInstead,NewerVersionAvailable
     ksp("com.google.dagger:hilt-compiler:2.51")
 
     // Retrofit
+    //noinspection UseTomlInstead,NewerVersionAvailable
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    //noinspection NewerVersionAvailable,UseTomlInstead
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
 //
 //
@@ -84,4 +91,9 @@ dependencies {
 
     // For Preferences DataStore
     implementation(libs.androidx.datastore.preferences)
+
+    // Coil for image loading
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
 }
