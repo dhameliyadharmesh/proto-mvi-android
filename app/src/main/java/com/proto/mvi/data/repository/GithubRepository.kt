@@ -1,7 +1,7 @@
 package com.proto.mvi.data.repository
 
-import com.proto.mvi.data.remote.GithubService
 import com.proto.mvi.data.model.Repo
+import com.proto.mvi.data.remote.GithubService
 import com.proto.mvi.util.ResultWrapper
 import retrofit2.HttpException
 import java.io.IOException

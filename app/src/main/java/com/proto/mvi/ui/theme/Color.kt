@@ -15,23 +15,28 @@ val Pink40 = Color(0xFF7D5260)
 val WHITE = Color(0xFFFFFFFF)
 val BLACK = Color(0xFF000000)
 
+    val Background2 = Color(0xFFF1EEEE)
+
 
 data class ExtendedColors(
     val cardBackgroundColor: Color,
     val transparent: Color,
     val text: Color,
+    val avatarBorderColor: Color,
 )
 
 val LightExtendedColors = ExtendedColors(
     transparent = Color(0x00000000),
-    cardBackgroundColor = Color(0xFFD5D4D4),
+    cardBackgroundColor = Color(0xFFFFFFFF),
     text = Color(0xFF000000),
+    avatarBorderColor = Color(0x50000000),
 
     )
 val DarkExtendedColors = ExtendedColors(
     transparent = Color(0x00000000),
     cardBackgroundColor = Color(0xFFFFFFFF),
     text = Color(0xFF000000),
+    avatarBorderColor = Color(0x50FFFFFF),
 )
 
 

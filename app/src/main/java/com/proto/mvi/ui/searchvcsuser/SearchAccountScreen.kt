@@ -1,35 +1,39 @@
 package com.proto.mvi.ui.searchvcsuser
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import coil3.compose.AsyncImage
@@ -48,7 +52,7 @@ fun SearchAccountScreen(
     appViewModel: AppViewModel,
     viewModel: SearchAccountViewModel = hiltViewModel()
 ) {
-    var username by rememberSaveable { mutableStateOf("") }
+    var username by rememberSaveable { mutableStateOf("mralexgray") }
     val uiState by viewModel.uiState.collectAsState()
 
     WrapperScreen {
@@ -127,9 +131,10 @@ fun SearchAccountScreen(
                                     Row(
                                         modifier = Modifier
                                             .fillMaxWidth()
+                                            .fillMaxHeight()
                                             .padding(all = 8.dp),
                                         horizontalArrangement = Arrangement.spacedBy(12.dp)
-                                    ){
+                                    ) {
 //                                    Icon(
 //                                        painter = painterResource(id = R.drawable.ic_fork),
 //                                        contentDescription = null,
@@ -146,33 +151,46 @@ fun SearchAccountScreen(
                                             },
                                             modifier = Modifier
                                                 .size(48.dp)
+                                                .border(
+                                                    width = 1.dp,
+                                                    color = MaterialTheme.extendedColors.avatarBorderColor,
+                                                    shape = RoundedCornerShape(48.dp)
+                                                )
                                                 .clip(RoundedCornerShape(48.dp))
-//                                            .background(MaterialTheme.extendedColors.wallpaperItemCard)
                                                 .clickable {
-//                                                onWallpaperItemClicked()
                                                 },
                                             contentScale = ContentScale.Crop
                                         )
-                                        Column(
+                                        Box(
                                             modifier = Modifier
-                                                .fillMaxWidth(),
-                                            verticalArrangement = Arrangement.spacedBy(4.dp)
+                                                .weight(1f)
+                                                .fillMaxHeight()
                                         ) {
-                                            TextView(
-                                                text = username,
-                                                textStyle = MaterialTheme.typography.labelMedium.copy(
-                                                    fontSize = 14.sp
-                                                ),
-                                                modifier = Modifier.padding(start = 4.dp)
-                                            )
-                                            TextView(
-                                                text = repos.size.toString().plus(" Repositories"),
-                                                textStyle = MaterialTheme.typography.labelSmall.copy(
-                                                    fontSize = 14.sp
-                                                ),
-                                                modifier = Modifier.padding(start = 4.dp)
-                                            )
+                                            Column(
+                                                modifier = Modifier,
+                                                verticalArrangement = Arrangement.Center,
+                                                horizontalAlignment = Alignment.Start
+                                            ) {
+                                                TextView(
+                                                    text = username,
+                                                    textStyle = MaterialTheme.typography.labelMedium.copy(
+                                                        fontSize = 14.sp,
+                                                        fontWeight = FontWeight.SemiBold,
+                                                    ),
+                                                    modifier = Modifier.padding(start = 4.dp)
+                                                )
+                                                TextView(
+                                                    text = repos.size.toString()
+                                                        .plus(" Repositories"),
+                                                    textStyle = MaterialTheme.typography.labelSmall.copy(
+                                                        fontSize = 14.sp,
+                                                        fontWeight = FontWeight.Normal,
+                                                    ),
+                                                    modifier = Modifier.padding(start = 4.dp)
+                                                )
+                                            }
                                         }
+
                                     }
                                 }
 
